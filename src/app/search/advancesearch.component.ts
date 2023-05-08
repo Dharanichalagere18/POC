@@ -1,23 +1,21 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AdvancesearchComponent } from './search/advancesearch.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
-import { EmployeeService } from './service/employee.service';
+import { EmpAddEditComponent } from '../emp-add-edit/emp-add-edit.component';
+import { EmployeeService } from '../service/employee.service';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import { FilterComponent } from './filter/filter.component';
+import { FilterComponent } from '../filter/filter.component';
 import {MatTableDataSource} from '@angular/material/table';
-import { Observable } from 'rxjs';
-
+import {HttpClient} from '@angular/common/http'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-advancesearch',
+  templateUrl: './advancesearch.component.html',
+  styleUrls: ['./advancesearch.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AdvancesearchComponent implements OnInit{
+
   displayedColumns:string[] = [
     'employeeId',
     'employeeName',
@@ -35,27 +33,18 @@ export class AppComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
 constructor(private _dialog: MatDialog,
+  private http: HttpClient,
   private _service: EmployeeService,
   private _router: Router,
   private filterComponent: FilterComponent
   ){}
+
+
   ngOnInit(): void {
 
     this.getEmployeeList();
     
   }
-
-
-openAddEditEmpForm() {
- const dialogRef= this._dialog.open(EmpAddEditComponent);
- dialogRef.afterClosed().subscribe({
-  next:(val) => {
-    if(val) {
-      this.getEmployeeList();
-    }
-  }
- })
-}
 
 getEmployeeList() {
   this._service.getEmployeeList().subscribe({
@@ -76,9 +65,5 @@ this.dataSource.paginator=this.paginator;
       this.dataSource.paginator.firstPage();
     }
   }
-  openFilter(){
-    this._router.navigate(['/filter']);
-  }
-
-  
+ 
 }

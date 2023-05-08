@@ -1,0 +1,56 @@
+<div mat-dialog-title>
+    <h1>Employee Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>EmployeeName</mat-label>
+                <input matInput type="text" placeholder="Please enter your name" formControlName="employeeName">
+            </mat-form-field>
+        </div>
+        <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Age</mat-label>
+                    <input matInput type="text" placeholder="Please enter your age" formControlName="age">
+                </mat-form-field>
+            </div>
+
+        <div class="row">
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-label><b>Gender:    </b></mat-label>
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="others">Others</mat-radio-button>
+              </mat-radio-group>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="department">
+                  <mat-option *ngFor="let val of department" [value]="val">
+                    {{val}}
+                  </mat-option>
+                </mat-select >
+              </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone no</mat-label>
+                    <input matInput type="string" placeholder="+91   " formControlName="phoneno">
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Location</mat-label>
+                    <input matInput type="text" placeholder="Enter Your City " formControlName="location">
+                </mat-form-field>
+            </div>                          
+                
+            <div mat-dialog-actions  align="center" >
+                <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+               
+            </div>
+
