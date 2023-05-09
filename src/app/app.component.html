@@ -1,7 +1,12 @@
-<mat-toolbar color="black">
+<mat-toolbar color="primary">
   
- <span><b>DMart</b></span>
- <div class="button-container">
+ <span ><b>DMart</b></span>
+ 
+ <a  routerLink=""><mat-icon>home</mat-icon></a>
+ 
+ <div class="button-container" >
+
+  
  <!-- <button mat-form-field class="search"  appearance="outline"> -->
   <button routerLink="/search" class="advanceserach" mat-raised-button>
     search
@@ -9,7 +14,7 @@
   <!-- </button> -->
   
 
-  <button routerLink="/filter" class="serach" mat-raised-button>
+  <button  routerLink="/filter" class="serach" mat-raised-button>
     Advance search
      </button>
 </div>
@@ -18,6 +23,8 @@
 Add Employee
 </button>
 </mat-toolbar>
-
+<div>
+ 
+</div>
 
 <router-outlet></router-outlet>

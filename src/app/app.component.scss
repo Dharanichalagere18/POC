@@ -10,15 +10,29 @@
   margin-left: 20px;
  }
  .button{
-  gap:30px;
+  gap:40px;
  }
 
  .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  margin-left: 450px;
 
-  & button {
-    margin-right: 10px;
+  button {
+    margin-right: 70px;
+    align-content: center;
+  }
+
+  .mat-toolbar {
+    display: flex;
+    width: 30%;
+  }
+  
+  a {
+    margin-left: 50px;
+  }
+  .icon {
+    gap:100px
   }
 }
